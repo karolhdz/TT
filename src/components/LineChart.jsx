@@ -6,7 +6,17 @@ import { Chart as ChartJs, CategoryScale, LinearScale, PointElement, LineElement
 ChartJs.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, BarElement);
 
 const options = {
-    
+    scales: {
+        y:
+          {
+            min: 0,
+            max: 100,
+          },
+        x:
+          {
+            
+          },
+      },
 }
 
 const LineChart = ({techniques = [10, 20, 30]}) => {

@@ -21,7 +21,7 @@ const Main = () => {
                 toast.current.show({ severity: 'error', detail: spechData.error });
             } else {
                 let message = {}
-                if (false) {
+                if (spechData.binary) {
                     message = { id: '1', sticky: true, severity: 'error', detail: 'Este texto cuenta con técnicas de persuación', closable: false }
                 } else{
                     message = { id: '1', sticky: true, severity: 'success', detail: 'Este texto NO cuenta con técnicas de persuación', closable: false }
@@ -42,13 +42,12 @@ const Main = () => {
         }).catch(error => {
             setSpechData({error: "Hubo un error de conexión"})
         })
-        // console.log(response)
         
     }
 
     const formatTechniques = (tecs) => {
         if(tecs != null){
-            return [tecs.appeal, tecs.discreting, tecs.loaded_language];
+            return [tecs.appeal * 100, tecs.discreting * 100, tecs.loaded_language*100];
         }
     }
 
@@ -76,10 +75,10 @@ const Main = () => {
                                 <Messages ref={msgs} />
                             </div>
                         </TabPanel>
-                        <TabPanel header="Gráfica de Barras" disabled={spechData?.binary ? spechData.binary : true}>
+                        <TabPanel header="Gráfica de Barras" disabled={spechData?.binary ? !spechData.binary : true}>
                             <LineChart techniques={formatTechniques(spechData?.techniques ? spechData.techniques : null)}/>
                         </TabPanel>
-                        <TabPanel header="Gráfica Polar" disabled={spechData?.binary ? spechData.binary : true}>
+                        <TabPanel header="Gráfica Polar" disabled={spechData?.binary ? !spechData.binary : true}>
                             <PolarChart techniques={formatTechniques(spechData?.techniques ? spechData.techniques : null)}/>
                         </TabPanel>
                     </TabView>

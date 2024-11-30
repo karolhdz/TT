@@ -6,6 +6,17 @@ ChartJs.register(CategoryScale, LinearScale, PointElement, LineElement, Title, T
 
 const options = {
     responsive: true,
+    scales: {
+        y:
+          {
+            min: 0,
+            max: 100,
+          },
+        x:
+          {
+            
+          },
+      },
 }
 
 const PolarChart = ({techniques = [10, 20, 30]}) => {
@@ -24,12 +35,12 @@ const PolarChart = ({techniques = [10, 20, 30]}) => {
                     'rgba(255, 99, 132, 0.2)',
                     'rgba(255, 159, 64, 0.2)',
                     'rgba(255, 205, 86, 0.2)',
-                ],
-                borderColor: [
+                  ],
+                  borderColor: [
                     'rgb(255, 99, 132)',
                     'rgb(255, 159, 64)',
                     'rgb(255, 205, 86)',
-                ],
+                  ],
             }
         ]
     }
