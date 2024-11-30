@@ -1,38 +1,46 @@
-.App {
-  text-align: center;
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.p-menubar{
+  background-color: #DDDDE2;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.p-accordion-header-link{
+  background-color: white;
+}
+.p-inputtextarea.p-inputtext.p-component{
+  @apply border-gray-200 border-2;
+}
+/* .p-tabview-selected.p-highlight{
+  
+} */
+.p-tabview-nav{
+  @apply border-gray-200 border-b-2;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.p-unselectable-text{
+  @apply border-gray-200 border-b-2;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.p-unselectable-text.p-tabview-selected.p-highlight > .p-tabview-nav-link{
   color: white;
+  background-color: #6D1A42;
+}
+.p-menubar{
+  background-color: #6D1A42;
 }
 
-.App-link {
-  color: #61dafb;
+.p-menuitem-text{
+  color: #DDDDE2;
+}
+.p-menuitem.p-focus > .p-menuitem-content > .p-menuitem-link > .p-menuitem-text{
+  color: black;
+}
+.p-menubar-button{
+  color: #DDDDE2;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.p-scrollpanel-bar.p-scrollpanel-bar-y{
+  background-color: #363554;
 }
