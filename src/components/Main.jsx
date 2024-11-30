@@ -20,9 +20,15 @@ const Main = () => {
             if (spechData.error) {
                 toast.current.show({ severity: 'error', detail: spechData.error });
             } else {
+                let message = {}
+                if (false) {
+                    message = { id: '1', sticky: true, severity: 'error', detail: 'Este texto cuenta con técnicas de persuación', closable: false }
+                } else{
+                    message = { id: '1', sticky: true, severity: 'success', detail: 'Este texto NO cuenta con técnicas de persuación', closable: false }
+                }
                 if (msgs.current) {
                     msgs.current.clear();
-                    msgs.current.show({ id: '1', sticky: true, severity: 'error', detail: 'Este texto cuenta con técnicas de persuación', closable: false });
+                    msgs.current.show(message);
                 }
             }
         }
@@ -31,8 +37,13 @@ const Main = () => {
 
     const onSubmit = () => {
         const discurss = document.getElementById("discurss").value;
-        const response = getResumen(discurss);
-        setSpechData(response)
+        getResumen(discurss).then(response =>{
+            setSpechData(response)
+        }).catch(error => {
+            setSpechData({error: "Hubo un error de conexión"})
+        })
+        // console.log(response)
+        
     }
 
     const formatTechniques = (tecs) => {

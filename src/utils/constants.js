@@ -1,1 +1,1 @@
-export const baseUrl = ''
+export const baseUrl = 'https://pokeapi.co/api/v2/berry/1/'
