@@ -10,7 +10,7 @@ import { Toast } from 'primereact/toast';
 // import './ScrollPanelDemo.css';
 
 
-const Main = () => {
+const Main = ({setLoading}) => {
     const msgs = useRef(null);
     const toast = useRef(null);
 
@@ -36,10 +36,13 @@ const Main = () => {
 
 
     const onSubmit = () => {
+        setLoading(true)
         const discurss = document.getElementById("discurss").value;
         getResumen(discurss).then(response =>{
             setSpechData(response)
+            setLoading(false)
         }).catch(error => {
+            setLoading(false)
             setSpechData({error: "Hubo un error de conexión"})
         })
         
